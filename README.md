@@ -25,7 +25,7 @@ Registers from documentation
 | 12 | Set OVP | unsigned short | 2 | r,w | 0x0020 |
 | 13 | Set OCP | unsigned short | 2 | r,w | 0x0021 |
 | 14 | Set OPP | unsigned short? | 2 | r,w | 0x0022,0x0023 |
-| 15 | Set Comm Address | bit (<250) | 0 |  r,w | 0x9999 |
+| 15 | Set Comm Address | byte (1-250) | 0 |  r,w | 0x9999 |
 
 **Notes**  
 #2 See struct below from documentation.   
@@ -33,6 +33,7 @@ Registers from documentation
 #4 when it's reading 0x0233 that equals voltage has 2 decimal places, current 3, power 3  
 #7, #14 Not sure, it says "32 digit capacity", maybe 2 integers to make a 32 digit number (first register is first 16 digits, 2nd is last 16)
 #14 type (range as it's calle in docs) says 0-65535 (unsigned short) but I question that since it's a combination of two registers like #7
+#15 docs say the range is 1-250, not sure of the best type to use for that. 
 
 ```
 // protection status bit
