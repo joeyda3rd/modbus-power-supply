@@ -15,11 +15,11 @@ Registers from documentation
 | 0 | Output On/Off | Boolean | 0 | r,w | 0x0001 |
 | 1 | Protect Status | Struct | 0 | r | 0x0002 |
 | 2 | Specification | unsigned short | 0 | r | 0x0003 |
-| 3 | Tail Classification | 0-0xFFFF? | 0 | r | 0x0004 |
-| 4 | Decimal Point Values | 0-0xFFFF? | 0 | r | 0x0005 |
+| 3 | Tail Classification | hexadecimal | 0 | r | 0x0004 |
+| 4 | Decimal Point Values | hexadecimal | 0 | r | 0x0005 |
 | 5 | Voltage Display Value | unsigned short | 2 | r | 0x0010 |
 | 6 | Current Display Value | unsigned short | 3 | r | 0x0011 |
-| 7 | Power Display Value | 2 integers | 3 | r | 0x0012,0x0013 |
+| 7 | Power Display Value | 2 integers? | 3 | r | 0x0012,0x0013 |
 | 9 | Set Voltage | unsigned short | 2 | r,w | 0x0030 |
 | 10 | Set Current | unsigned short | 3 | r,w | 0x0031 |
 | 12 | Set OVP | unsigned short | 2 | r,w | 0x0020 |
@@ -31,7 +31,8 @@ Registers from documentation
 #2 See struct below from documentation.   
 #3 no idea  
 #4 when it's reading 0x0233 that equals voltage has 2 decimal places, current 3, power 3  
-#7, #14 Not sure, Looks like 2 integers to make a 32 digit number (first register is first 16 digits, 2nd is last 16)  
+#7, #14 Not sure, it says "32 digit capacity", maybe 2 integers to make a 32 digit number (first register is first 16 digits, 2nd is last 16)
+#14 type (range as it's calle in docs) says 0-65535 (unsigned short) but I question that since it's a combination of two registers like #7
 
 ```
 // protection status bit
