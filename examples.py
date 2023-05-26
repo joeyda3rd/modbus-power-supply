@@ -8,7 +8,7 @@ power_supply = PowerSupply(port='/dev/ttyUSB0')
 # power_supply = PowerSupply('COM4', 115200, 2, 10.0, 5.0)
 
 # Set the voltage to 5V
-power_supply.set_voltage(5.0)
+power_supply.set_voltage(0)
 
 # Enable the output
 power_supply.enable_output()
@@ -60,6 +60,6 @@ print(f"Protection status: {power_supply.get_protection_status()}")
 #disable power output
 power_supply.disable_output()
 
-# Check if output is enabled
+# Check if output is disabled
 if not(power_supply.is_output_enabled()):
     print("Output is disabled")

@@ -95,6 +95,13 @@ print(f"OPP status: {power_supply.get_opp()}")
 power_supply.set_opp(20)
 print(f"New OPP status: {power_supply.get_opp()}")
 
+#disable power output
+power_supply.disable_output()
+
+# Check if output is disabled
+if not(power_supply.is_output_enabled()):
+    print("Output is disabled")
+
 ```
 
 ### Methods
