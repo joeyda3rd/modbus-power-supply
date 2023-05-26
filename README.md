@@ -111,7 +111,7 @@ Here are the methods provided by the `PowerSupply` class:
 - `get_current_display()`: Get the displayed output current. Returns a float value.
 - `get_power_display()`: Get the displayed output power. Returns a float value.
 - `get_comm_address()`: Get the communication address. Returns an integer value.
-- `set_comm_address(address)`: Set the communication address. `address` should be an integer value between 0 and 250.
+- `set_comm_address(address)`: Set the communication address. `address` should be an integer value between 1 and 250.
 - `get_protection_status()`: Get the protection status. Returns a dictionary with the keys 'isOVP', 'isOCP', 'isOPP', 'isOTP', and 'isSCP'.
 - `get_ovp()`, `set_ovp(ovp)`: Get or set the Over Voltage Protection (OVP) value. `ovp` should be a float value between 0 and 30.
 - `get_ocp()`, `set_ocp(ocp)`: Get or set the Over Current Protection (OCP) value. `ocp` should be a float value between 0 and 10.
