@@ -82,22 +82,40 @@ print(f"Protection status: {power_supply.get_protection_status()}")
 
 # Get and set Over Voltage Protection (OVP) status
 print(f"OVP status: {power_supply.get_ovp()}")
-power_supply.set_ovp(True)
+power_supply.set_ovp(10)
 print(f"New OVP status: {power_supply.get_ovp()}")
 
 # Get and set Over Current Protection (OCP) status
 print(f"OCP status: {power_supply.get_ocp()}")
-power_supply.set_ocp(True)
+power_supply.set_ocp(2)
 print(f"New OCP status: {power_supply.get_ocp()}")
 
 # Get and set Over Power Protection (OPP) status
 print(f"OPP status: {power_supply.get_opp()}")
-power_supply.set_opp(True)
+power_supply.set_opp(20)
 print(f"New OPP status: {power_supply.get_opp()}")
 
 ```
 
-Please refer to the library API documentation for more details.
+### Methods
+
+Here are the methods provided by the `PowerSupply` class:
+
+- `enable_output(on)`: Enable or disable the power output. `on` should be a boolean value.
+- `is_output_enabled()`: Check if the power output is enabled. Returns a boolean value.
+- `set_voltage(voltage)`: Set the output voltage. `voltage` should be a float value between 0 and 30.
+- `get_voltage()`: Get the set output voltage. Returns a float value.
+- `set_current(current)`: Set the output current. `current` should be a float value between 0 and 10.
+- `get_current()`: Get the set output current. Returns a float value.
+- `get_voltage_display()`: Get the displayed output voltage. Returns a float value.
+- `get_current_display()`: Get the displayed output current. Returns a float value.
+- `get_power_display()`: Get the displayed output power. Returns a float value.
+- `get_comm_address()`: Get the communication address. Returns an integer value.
+- `set_comm_address(address)`: Set the communication address. `address` should be an integer value between 0 and 250.
+- `get_protection_status()`: Get the protection status. Returns a dictionary with the keys 'isOVP', 'isOCP', 'isOPP', 'isOTP', and 'isSCP'.
+- `get_ovp()`, `set_ovp(ovp)`: Get or set the Over Voltage Protection (OVP) value. `ovp` should be a float value between 0 and 30.
+- `get_ocp()`, `set_ocp(ocp)`: Get or set the Over Current Protection (OCP) value. `ocp` should be a float value between 0 and 10.
+- `get_opp()`, `set_opp(opp)`: Get or set the Over Power Protection (OPP) value. `opp` should be a float value between 0 and 300.
 
 ## Contributing
 
