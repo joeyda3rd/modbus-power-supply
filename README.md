@@ -1,6 +1,7 @@
 # Hanmatek Power Supply Python Library
 
-This repository contains a Python library to interact with the Hanmatek HM310T power supply over the Modbus interface.
+This repository contains a Python library to interact with the Hanmatek HM310T power supply over the Modbus interface.  
+See [further reading](#further-reading) below for technical details and register values.
 
 ⚠️ **Safety Warning**
 
@@ -107,6 +108,7 @@ Contributions are welcome! Please open an issue if you encounter a bug or have a
 This library is licensed under the MIT license.
 
 ---
+## Further Reading
 
 Some previous work on the topic and documentation from OEM 
 
@@ -135,7 +137,7 @@ Registers from documentation
 | 15 | Set Comm Address | byte (1-250) | 0 |  r,w | 0x9999 |
 
 **Notes**  
-#1 See struct below from documentation.   
+#1 See bit field below from documentation.   
 #3 no idea  
 #4 when it's reading 0x0233 that equals voltage has 2 decimal places, current 3, power 3  
 #7, #14 Two 16 bit registers are used to make one 32 bit value.  
