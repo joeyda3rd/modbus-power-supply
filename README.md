@@ -7,7 +7,7 @@ http://www.roedan.com/controlling-a-cheap-usb-power-supply/
 https://bitbucket.org/roedan/powersupply/src/master/  
 http://nightflyerfireworks.com/home/fun-with-cheap-programable-power-supplies
 
-[Documentation provided by the OEM](Modbus.pdf)
+[Documentation provided by the OEM](OEM-docs/Modbus.pdf)
 
 Registers from documentation
 | Number | Function | Type | Decimal Places Capacity | Read/Write | Register Address |
