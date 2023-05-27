@@ -16,7 +16,7 @@ This software is provided "as is", without warranty of any kind, express or impl
 - Python 3.7 or higher
 - PyModbus (version 3.2.2 was used for development)
 - A Hanmatek HM310T power supply connected to a PC by USB
-- May work with other Hanmatek power supplies, requires you to reverse engineer the unit. See [further reading](#further-reading) below for technical details and register values.
+- May work with other Hanmatek or Modbus enabled power supplies, requires you to reverse engineer the unit. See [further reading](#further-reading) below for technical details and register values.
 
 ⚠️ **Use At Your Own Risk**
 
