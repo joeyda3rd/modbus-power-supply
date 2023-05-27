@@ -11,6 +11,10 @@ The Hanmatek HM310T power supply is a device that can produce potentially danger
 
 This software is provided "as is", without warranty of any kind, express or implied. Incorrect use of this software could lead to damage to your power supply or other equipment, or personal injury. Use this software responsibly and at your own risk.
 
+⚠️ **Use At Your Own Risk**
+
+By using this software, you agree that the authors and maintainers of this software are not liable for any damage to equipment, or any personal injury, that may occur through normal or abnormal use of this software. Always double-check your work and never leave a powered device unattended.
+
 ## Requirements
 
 - Python 3.7 or higher
@@ -18,9 +22,7 @@ This software is provided "as is", without warranty of any kind, express or impl
 - A Hanmatek HM310T power supply connected to a PC by USB
 - May work with other Hanmatek or Modbus enabled power supplies, requires you to reverse engineer the unit. See [further reading](#further-reading) below for technical details and register values.
 
-⚠️ **Use At Your Own Risk**
 
-By using this software, you agree that the authors and maintainers of this software are not liable for any damage to equipment, or any personal injury, that may occur through normal or abnormal use of this software. Always double-check your work and never leave a powered device unattended.
 
 ...
 
