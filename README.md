@@ -1,6 +1,7 @@
 # Hanmatek Power Supply Python Library
 
 This repository contains a Python library to interact with the Hanmatek HM310T power supply over the Modbus interface.  
+Learn how this is accomplished for interacting with similar devices below in [#further reading](#further-reading).  
 
 <img src="/OEM-docs/61osnNY3qPL._SL1500_.jpg?raw=true" width="250"> <img src="/OEM-docs/81EDT-klVJL._SL1500_.jpg?raw=true" width="250">
 
@@ -13,7 +14,7 @@ This software is provided "as is", without warranty of any kind, express or impl
 ## Requirements
 
 - Python 3.7 or higher
-- PyModbus
+- PyModbus (version 3.2.2 was used for development)
 - A Hanmatek HM310T power supply connected to a PC by USB
 - May work with other Hanmatek power supplies, requires you to reverse engineer the unit. See [further reading](#further-reading) below for technical details and register values.
 
@@ -28,6 +29,8 @@ By using this software, you agree that the authors and maintainers of this softw
 To install the library, clone this repository and install it using pip:
 
 ```bash
+pip install pymodbus
+pip install pyserial
 git clone https://github.com/joeyda3rd/hanmatek-power-supply.git
 cd hanmatek-power-supply
 pip install .
@@ -137,13 +140,31 @@ This library is licensed under the MIT license.
 ---
 ## Further Reading
 
-Some previous work on the topic and documentation from OEM 
+When reverse engineering a power supply with a modbus interface, either over serial or other communication protocol, it's going to be essential to know the register addresses for the various I/O and the function code. In this case, we got lucky and the OEM provided that documentation. 
+It's possible to learn these by using a script to brute force read and write (and read) each address from 1 to 9999 (see modbus_read.py in code) and/or sniffing the unencrypted traffic of OEM software. It's important to understand the Modbus protocol register addressing. 
 
-http://www.roedan.com/controlling-a-cheap-usb-power-supply/  
-https://bitbucket.org/roedan/powersupply/src/master/  
-http://nightflyerfireworks.com/home/fun-with-cheap-programable-power-supplies
+In the Modbus protocol, there are four types of data that can be accessed, each with its own address space:
+
+1. Coils (also known as Discrete Outputs): Addresses 00001 to 09999
+2. Discrete Inputs: Addresses 10001 to 19999
+3. Input Registers: Addresses 30001 to 39999
+4. Holding Registers: Addresses 40001 to 49999
+
+Each of these address spaces can contain up to 10,000 addresses, for a total of 40,000 addresses. However, not all devices will use all of these addresses. The actual number of addresses used will depend on the specific device and its configuration.
+
+It's also worth noting that in the Modbus protocol, addresses are often represented in a zero-based format. For example, the first holding register is often referred to as register 40001 in documentation, but in the actual Modbus messages, it would be referred to as holding register 0.
+
+In our case the entirety of the registers we accessed were in the holding registers space. The use of holding registers is common in Modbus devices, including power supplies, because holding registers can be read from and written to, making them versatile for various types of data. However, it's not guaranteed that every Modbus power supply will only use holding registers.
+
+The specific Modbus registers used, and their purpose, can vary widely between different devices and manufacturers. Some devices might use input registers to provide read-only data, or coils and discrete inputs for binary data.
+
+The best source of information about which registers are used by a particular device is the device's Modbus map or register map, which is usually provided in the device's documentation or manual. This map will list all the Modbus addresses used by the device, along with a description of the data stored at each address.
+
+It's important to know what programming protocol and communication protocol are being used with your device as there are others besides Modbus or serial. 
 
 [Documentation provided by the OEM](OEM-docs/Modbus.pdf) (This was included on a CD provided by OEM)
+
+The registers will accept read (03) and write (06) instructions.
 
 Registers from documentation
 | Number | Function | Type | Decimal Places Capacity | Read/Write | Register Address |
@@ -187,3 +208,9 @@ union _ST
   uint8_t Dat;
 ｝
 ```
+
+Some previous work on the topic
+
+http://www.roedan.com/controlling-a-cheap-usb-power-supply/  
+https://bitbucket.org/roedan/powersupply/src/master/  
+http://nightflyerfireworks.com/home/fun-with-cheap-programable-power-supplies
