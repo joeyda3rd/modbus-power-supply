@@ -1,13 +1,26 @@
 from pymodbus.client import ModbusSerialClient as ModbusClient
 from pymodbus.exceptions import ModbusIOException
 
+class PowerSupplyCommunicationError(Exception):
+    pass
+
 class PowerSupply:
     def __init__(self, port, baudrate=9600, slave=1, voltage_limit=30.0, current_limit=10.0):
-        self.client = ModbusClient(method='rtu', port=port, baudrate=baudrate)
-        self.client.connect()
         self.voltage_limit = voltage_limit  # Voltage limit in volts
         self.current_limit = current_limit  # Current limit in amps
         self.slave = slave
+        
+        self.client = ModbusClient(method='rtu', port=port, baudrate=baudrate)
+        if not self.client.connect():
+            raise PowerSupplyCommunicationError("Failed to connect to the power supply")
+        # Attempt to read a known register as a connectivity check
+        try:
+            result = self.client.read_holding_registers(0x0001, count=1, slave=slave)
+            if result.isError():
+                raise PowerSupplyCommunicationError("Unable to read from power supply")
+        except Exception as e:
+            raise PowerSupplyCommunicationError("Communication error with power supply: " + str(e)) 
+
 
     def read_register(self, address):
         try:
