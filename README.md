@@ -131,6 +131,10 @@ Here are the methods provided by the `PowerSupply` class:
 - `get_ocp()`, `set_ocp(ocp)`: Get or set the Over Current Protection (OCP) value. `ocp` should be a float value between 0 and 10.
 - `get_opp()`, `set_opp(opp)`: Get or set the Over Power Protection (OPP) value. `opp` should be a float value between 0 and 300.
 
+### Simple Application Example
+See the simple CLI application example below (psui.py)
+<img src="/images/screenshot-psui.jpg?raw=true" width=250>
+
 ## Contributing
 
 Contributions are welcome! Please open an issue if you encounter a bug or have a feature request. If you want to contribute code, please open a pull request.
