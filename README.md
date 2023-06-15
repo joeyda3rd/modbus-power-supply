@@ -84,9 +84,9 @@ print(f"Power display: {power_supply.get_power_display()}W")
 
 # Get and set communication address
 print(f"Communication address: {power_supply.get_comm_address()}")
-//uncomment to change address, but will require new connection at new address.
-//power_supply.set_comm_address(2)
-//print(f"New communication address: {power_supply.get_comm_address()}")
+# uncomment to change address, but will require new connection at new address.
+# power_supply.set_comm_address(2)
+# print(f"New communication address: {power_supply.get_comm_address()}")
 
 # Get protection status
 print(f"Protection status: {power_supply.get_protection_status()}")
