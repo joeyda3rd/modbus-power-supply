@@ -7,10 +7,9 @@ setup(
     author='Joey Marino',
     author_email='joey.da3rd@gmail.com',
     url='https://github.com/joeyda3rd/modbus-power-supply',
-    packages=['pyHM310T'],
+    py_modules=['pyHM310T'],
     install_requires=[
         'pymodbus',
         'pyserial',
     ],
 )
-
