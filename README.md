@@ -31,7 +31,7 @@ By using this software, you agree that the authors and maintainers of this softw
 To install the library, clone this repository and install it using pip:
 
 ```bash
-pip install pymodbus
+pip install -v "pymodbus==3.2.2"
 pip install pyserial
 git clone https://github.com/joeyda3rd/hanmatek-power-supply.git
 cd hanmatek-power-supply
